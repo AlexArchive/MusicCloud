@@ -17,7 +17,7 @@ namespace AudioHost.Controllers
             }
 
             var storeLocation = HttpContext.Current.Server.MapPath("~/App_Data");
-            var provider = new MultipartFormDataStreamProvider(storeLocation);
+            var provider = new FileStreamProvider(storeLocation);
 
             try
             {
