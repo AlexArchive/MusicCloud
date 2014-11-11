@@ -1,9 +1,17 @@
 ﻿app.controller('mainController', function ($scope) {
 
+    var fileSizeLimit = 20000000;
+
     $scope.upload = function () {
 
         if (!$scope.file) {
             $scope.uploadStatus = "Please choose a file to upload.";
+            return;
+        }
+
+        var fileSize = Math.round(parseInt($scope.file.size));
+        if (fileSize > fileSizeLimit) {
+            $scope.uploadStatus = "File is too big. Maximim file size: " + fileSizeLimit;
             return;
         }
 
