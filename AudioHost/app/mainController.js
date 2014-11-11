@@ -1,19 +1,27 @@
-﻿app.controller('mainController', function($scope, $http) {
-    $scope.upload = function() {
+﻿app.controller('mainController', function ($scope) {
+    $scope.upload = function () {
         $scope.uploadStatus = "Uploading..";
-        var data = new FormData();
-        data.append('file', $scope.file);
 
-        $http.post('api/upload', data,
-        {
-            transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
-        })
-        .success(function() {
-            $scope.uploadStatus = "Upload complete.";
-        })
-        .error(function() {
-            $scope.uploadStatus = "Failed to upload content.";
-        });
+        var postData = new FormData();
+        postData.append('file', $scope.file);
+
+        var request = new XMLHttpRequest();
+        request.upload.onprogress = function (e) {
+            var progressCompleted = Math.round(e.loaded / e.total * 100);
+            $scope.progress = progressCompleted;
+            $scope.$apply();
+        };
+        request.onreadystatechange = function () {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    $scope.uploadStatus = "Upload complete.";
+                } else {
+                    $scope.uploadStatus = "Upload failed.";
+                }
+                $scope.$apply();
+            }
+        };
+        request.open('POST', 'api/upload');
+        request.send(postData);
     };
 });
