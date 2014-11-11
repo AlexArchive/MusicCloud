@@ -1,5 +1,12 @@
 ﻿app.controller('mainController', function ($scope) {
+
     $scope.upload = function () {
+
+        if (!$scope.file) {
+            $scope.uploadStatus = "Please choose a file to upload.";
+            return;
+        }
+
         $scope.uploadStatus = "Uploading..";
 
         var postData = new FormData();
