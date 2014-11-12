@@ -74,6 +74,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\fileModel.js" />
+    <Content Include="app\fileUploadService.js" />
     <Content Include="Index.html" />
     <Content Include="Global.asax" />
     <Content Include="app\mainController.js" />
