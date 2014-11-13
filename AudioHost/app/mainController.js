@@ -14,6 +14,7 @@
             return;
         }
 
+        $scope.uploading = true;
         $scope.uploadStatus = "Uploading..";
         fileUpload.uploadFileToUrl(
             $scope.file,
@@ -29,6 +30,7 @@
     };
 
     function onUploadCompleted(statusCode) {
+        $scope.uploading = false;
         if (statusCode === 200) {
             $scope.uploadStatus = "Upload complete.";
         } else {
