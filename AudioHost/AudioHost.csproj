@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\dropzoneModel.js" />
     <Content Include="app\fileModel.js" />
     <Content Include="app\fileUploadService.js" />
     <Content Include="Index.html" />

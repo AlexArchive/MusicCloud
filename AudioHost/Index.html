@@ -8,14 +8,28 @@
     <script src="app/fileModel.js"></script>
     <script src="app/mainController.js"></script>
     <script src="app/fileUploadService.js"></script>
+    <script src="app/dropzoneModel.js"></script>
+    <style>
+        div[dropzone-model] {
+            color: gray;
+            border: 2px gray dashed;
+            padding: 20px;
+            margin: 20px;
+            margin-left: 0;
+            width: 400px;
+        }
+    </style>
 </head>
-<body ng-app="AudioHost" ng-controller="mainController" ng-cloak>
-    <p>{{ uploadStatus }}</p>
-    <form>
-        <input type="file" file-model="file" />
-        <button ng-click="upload()">Upload</button>
-    </form>
-    <progress max="100" value="{{ progress }}"></progress>
-    <p>{{ progress }}%</p>
-</body>
+    <body ng-app="AudioHost" ng-controller="mainController" ng-cloak>
+        
+        <div dropzone-model="file">Drop File Here</div>
+
+        <p>{{ uploadStatus }}</p>
+        <form>
+            <input type="file" file-model="file" />
+            <button ng-click="upload()">Upload</button>
+        </form>
+        <progress max="100" value="{{ progress }}"></progress>
+        <p>{{ progress }}%</p>
+    </body>
 </html>
