@@ -9,5 +9,10 @@ namespace MusicCloud
         {
             return Request.CreateResponse();
         }
+
+        public HttpResponseMessage Post()
+        {
+            return Request.CreateResponse();
+        }
     }
 }
