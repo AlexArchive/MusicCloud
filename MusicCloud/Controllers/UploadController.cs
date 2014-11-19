@@ -1,0 +1,33 @@
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
+
+namespace MusicCloud.Controllers
+{
+    public class UploadController : ApiController
+    {
+        public async Task<HttpResponseMessage> Post()
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+            }
+
+            var storePath = HttpContext.Current.Server.MapPath("~/App_Data");
+            var provider = new FileStreamProvider(storePath);
+
+            try
+            {
+                await Request.Content.ReadAsMultipartAsync(provider);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception);
+            }
+        }
+    }
+}

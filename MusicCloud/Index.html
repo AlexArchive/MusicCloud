@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AudioHost</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/fileModel.js"></script>
+    <script src="app/mainController.js"></script>
+    <script src="app/fileUploadService.js"></script>
+    <script src="app/dropzoneModel.js"></script>
+    <style>
+        div[dropzone-model] {
+            color: gray;
+            border: 2px gray dashed;
+            padding: 20px;
+            margin: 20px;
+            margin-left: 0;
+            width: 400px;
+        }
+    </style>
+</head>
+    <body ng-app="AudioHost" ng-controller="mainController" ng-cloak>
+        
+        <div dropzone-model="file">Drop File Here</div>
+
+        <p>{{ uploadStatus }}</p>
+        <form>
+            <input type="file" file-model="file" />
+            <button ng-click="upload()">Upload</button>
+        </form>
+        
+        <div ng-show="uploading">
+            <progress max="100" value="{{ progress }}"></progress>
+            <p>{{ progress }}%</p>
+        </div>
+    </body>
+</html>
