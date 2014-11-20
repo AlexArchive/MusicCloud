@@ -9,7 +9,7 @@ namespace MusicCloud
 {
     public class SoundController : ApiController
     {
-        private static Stream sound;
+        private static Stream sound = new MemoryStream();
 
         public HttpResponseMessage Get()
         {

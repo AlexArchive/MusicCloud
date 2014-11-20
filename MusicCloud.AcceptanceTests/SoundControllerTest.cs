@@ -37,6 +37,7 @@ namespace MusicCloud.AcceptanceTests
         }
 
         [Fact]
+        [UseDatabase]
         public void GetAfterPostReturnsPostedSound()
         {
             var expected = Resources.Song;
