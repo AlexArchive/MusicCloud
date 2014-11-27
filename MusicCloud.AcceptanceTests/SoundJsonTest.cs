@@ -55,7 +55,7 @@ namespace MusicCloud.AcceptanceTests
             using (var client = HttpClientFactory.Create())
             {
                 // Exercise
-                var response = client.GetAsync("").Result;
+                var response = client.GetAsync("Sound").Result;
 
                 // Verify
                 Assert.True(
@@ -74,7 +74,7 @@ namespace MusicCloud.AcceptanceTests
 
             using (var client = HttpClientFactory.Create())
             {
-                var response = client.PostAsync("", requestContent).Result;
+                var response = client.PostAsync("Sound", requestContent).Result;
 
                 Assert.True(
                     response.StatusCode == HttpStatusCode.Created,
@@ -93,8 +93,8 @@ namespace MusicCloud.AcceptanceTests
 
             using (var client = HttpClientFactory.Create())
             {
-                client.PostAsync("", requestContent).Wait();
-                var actual = client.GetByteArrayAsync("").Result;
+                client.PostAsync("Sound", requestContent).Wait();
+                var actual = client.GetByteArrayAsync("Sound").Result;
                 
                 Assert.Equal(expected.Length, actual.Length);
             }
@@ -145,7 +145,7 @@ namespace MusicCloud.AcceptanceTests
             using (var client = HttpClientFactory.Create())
             {
                 // Exercise
-                var actual = client.GetByteArrayAsync("").Result;
+                var actual = client.GetByteArrayAsync("Sound").Result;
 
                 // Verify
                 Assert.Equal(expected.Length, actual.Length);

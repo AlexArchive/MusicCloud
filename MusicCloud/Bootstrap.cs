@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace MusicCloud
 {
@@ -9,12 +10,23 @@ namespace MusicCloud
     {
         public static void Configure(HttpConfiguration config)
         {
+
             config.Routes.MapHttpRoute(
-                name: "Default",
-                routeTemplate: "{controller}",
+                name: "HomeSound",
+                routeTemplate: "{soundName}",
                 defaults: new
                 {
-                    controller = "Sound"
+                    controller = "Home"
+                });
+
+
+            config.Routes.MapHttpRoute(
+                name: "Default",
+                routeTemplate: "{controller}/{id}",
+                defaults: new
+                {
+                    controller = "Home",
+                    id = RouteParameter.Optional
                 });
         }
 
@@ -31,8 +43,8 @@ namespace MusicCloud
                 {
                     command.Connection = connection;
                     var schema = Properties.Resources.DatabaseSchema;
-                    foreach (var statement in 
-                        schema.Split(new[] {"GO"}, StringSplitOptions.RemoveEmptyEntries))
+                    foreach (var statement in
+                        schema.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries))
                     {
                         command.CommandText = statement;
                         command.ExecuteNonQuery();
