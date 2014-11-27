@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -13,7 +12,6 @@ namespace MusicCloud
 {
     public class SoundController : ApiController
     {
-
         public HttpResponseMessage Get()
         {
             var connectionStr = ConfigurationManager.ConnectionStrings["MusicCloud"].ConnectionString;

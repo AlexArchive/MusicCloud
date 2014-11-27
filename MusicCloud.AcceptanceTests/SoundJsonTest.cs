@@ -8,7 +8,7 @@ using Xunit;
 
 namespace MusicCloud.AcceptanceTests
 {
-    public class SoundControllerTest
+    public class SoundJsonTest
     {
         [Fact]
         [UseDatabase]

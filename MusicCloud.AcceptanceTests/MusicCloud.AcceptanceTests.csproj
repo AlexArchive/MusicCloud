@@ -75,7 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SoundControllerTest.cs" />
+    <Compile Include="SoundJsonTest.cs" />
     <Compile Include="UseDatabaseAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
